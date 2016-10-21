@@ -10,13 +10,14 @@ let precss = require('precss')
 let autoprefixer = require('autoprefixer')
 
 let index_file = path.resolve(__dirname, 'src/index.html')
-fs.readFile(index_file, 'utf-8', function(err, data) {
+fs.readFile(index_file, 'utf-8', function (err, data) {
     if (err) {
         console.log('error: ', err)
     } else {
         let devhtml = data
         if (data.indexOf('vendor.dll.js') < 0) {
-            devhtml = devhtml.replace('<script></script>', '<script></script><script type="text/javascript" src="/dist/vendor.dll.js"></script><script type="text/javascript" src="/dist/index.bundle.js"></script>')
+            devhtml = devhtml.replace('<script></script>', '<script></script><script type="text/javascript" src="/dist/vendor.dll.js"></scri' +
+                    'pt><script type="text/javascript" src="/dist/index.bundle.js"></script>')
         }
         fs.writeFileSync(index_file, devhtml)
     }
@@ -71,10 +72,13 @@ module.exports = {
                     'sass-loader',
                     'postcss-loader'
                 ]
-            }, {
-                test: /\.(css|scss)$/,
-                exclude: /src/,
-                loader: 'style!css!sass!postcss&sourceMap=true'
+            },
+            //  {     test: /\.(css|scss)$/,     exclude: /src/,     loader:
+            // 'style!css!sass!postcss&sourceMap=true' },
+            {
+                test: /\.css$/,
+                exclude: path.join(__dirname, 'src'),
+                loader: 'style!css'
             }, {
                 test: /\.(js|jsx)$/,
                 include: path.resolve(__dirname, 'src'),
