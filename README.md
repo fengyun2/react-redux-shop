@@ -49,4 +49,4 @@ npm run build
 2. `bindActionCreators` 写错名称
 3. `webpack.config.js` 的 'css exclude: /src/' 路径有误, 导致引入css报错
 4. 想不通为啥 `constants/actionTypes.js` 里 使用 `keyMirror` 导出对象会读取不到, 而在当前文件却可以读取到, 好奇怪。
-5. 不知道为啥 `antd-mobile` 老是报错, `Uncaught Error: Cannot find module "antd-mobile"`
+5. 不知道为啥 `antd-mobile` 老是报错, `Uncaught Error: Cannot find module "antd-mobile"`(感觉是因为`webpack.config.js的 'css-loader?modules&importLoaders=1&localIdentName=[name]___[local]-[hash:base64:' +'5]&sourceMap=true'` `css-modules`搞的鬼)

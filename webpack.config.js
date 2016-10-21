@@ -64,11 +64,17 @@ module.exports = {
                 include: path.resolve(__dirname, 'src'),
                 loader: 'vue'
             }, {
-                test: /\.(css|scss)$/,
+                test: /\.(css|sass|scss)$/,
                 include: path.resolve(__dirname, 'src'),
-                loaders: [
+/*                loaders: [
                     'style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]___[local]-[hash:base64:' +
                             '5]&sourceMap=true',
+                    'sass-loader',
+                    'postcss-loader'
+                ]*/
+                loaders: [
+                    'style-loader',
+                    'css-loader',
                     'sass-loader',
                     'postcss-loader'
                 ]
@@ -78,8 +84,19 @@ module.exports = {
             {
                 test: /\.css$/,
                 exclude: path.join(__dirname, 'src'),
-                loader: 'style!css'
-            }, {
+                loader: 'style!css!postcss'
+            },
+            {
+                test: /\.sass$/,
+                exclude: path.join(__dirname, 'src'),
+                loader: 'style!css!sass?indentedSyntax!postcss'
+            },
+                        {
+                test: /\.scss$/,
+                exclude: path.join(__dirname, 'src'),
+                loader: 'style!css!sass!postcss'
+            },
+            {
                 test: /\.(js|jsx)$/,
                 include: path.resolve(__dirname, 'src'),
                 exclude: /node_modules/,
