@@ -2,7 +2,7 @@
 * @Author: fengyun2
 * @Date:   2016-10-22 00:50:38
 * @Last Modified by:   fengyun2
-* @Last Modified time: 2016-10-22 16:09:25
+* @Last Modified time: 2016-10-22 16:28:49
 */
 
 import React, {Component} from 'react'
@@ -26,6 +26,7 @@ class Brand extends Component {
 
     return (
       <div className="content-block">
+
         <div className="content-block-title">分类</div>
         <div className="card">
           <div className="card-header color-white no-border no-padding">
@@ -38,6 +39,23 @@ class Brand extends Component {
             </div>
           </div>
           <div className="card-footer">卡脚</div>
+        </div>
+
+        <div className="content-block-title">FaceBook卡片</div>
+        <div className="card facebook-card">
+          <div className="card-header no-border">
+            <div className="avatar"><img  src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34" /></div>
+            <div className="name">风云一出, 谁与争锋</div>
+            <div className="date">星期六 16:20</div>
+          </div>
+          <div className="card-content">
+            <img className="card-cover" src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" />
+          </div>
+          <div className="card-footer no-border">
+            <a href="#" className="link">赞</a>
+            <a href="#" className="link">评论</a>
+            <a href="#" className="link">分享</a>
+          </div>
         </div>
       </div>
     )
