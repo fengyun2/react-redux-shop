@@ -2,12 +2,12 @@
 * @Author: fengyun2
 * @Date:   2016-10-22 16:47:44
 * @Last Modified by:   fengyun2
-* @Last Modified time: 2016-10-22 17:32:35
+* @Last Modified time: 2016-10-22 17:56:32
 */
 
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-// import {shouldComponentUpdate} from 'react-immutable-render-mixin'
+import PureRenderMixin from 'react-addons-pure-render-mixin'
 import * as ItemsActions from 'ACTIONS'
 import {bindActionCreators} from 'redux'
 import ReactPullToRefresh from 'react-pull-to-refresh'
@@ -16,7 +16,7 @@ let count = 1
 class Product extends Component {
   constructor(props) {
     super(props)
-    // this.shouldComponentUpdate = shouldComponentUpdate.bind(this)
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
 
     this.state = {
       items: [
@@ -53,8 +53,15 @@ class Product extends Component {
       items: this.state.items
     })
     console.log('new items: ', this.state.items)
+    this.forceUpdate()
     return true
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate....')
+    return this.props != nextProps || this.state != nextState
+  }
+
   render() {
     const {items, filter, actions, children} = this.props
 

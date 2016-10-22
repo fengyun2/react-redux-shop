@@ -18,7 +18,7 @@
 npm install
 
 # serve with hot reload at localhost:8080
-npm run dev
+npm run start
 
 # build for production with minification
 npm run build
@@ -38,6 +38,10 @@ npm run build
 这是 webpack 提供的方法, 这也是按需加载的核心方法。
 > 第一个参数是依赖, 第二个是回调函数,第三个就是上面提到过的 chunkName, 用来指定这个 chunk file 的 name。
 
+2. 将 `react-immutable-render-mixin` 更新为 `react-addons-pure-render-mixin`
+
+> `react-immutable-render-mixin` 作者不再维护了
+
 ### 2016/10/21
 
 1. 添加 `webpack.dll.config.js`, 即利用了 webpack 的 `DLLReferencePlugin`加快打包效率
@@ -54,9 +58,34 @@ npm run build
 
 ### 2016/10/22
 
-1. react 组件的 `state` 变化了，但是ui不更新
+1. ~~react 组件的 `state` 变化了，但是ui不更新~~
 
-造成这一bug的原因是: 引入`react-immutable-render-mixin`这个插件导致页面ui更新判断条件不成立, 以至于ui页面没有刷新。
+造成这一bug的原因是: 引入`react-immutable-render-mixin` 或 `react-addons-pure-render-mixin` 这个插件导致页面ui更新判断条件不成立, 以至于ui页面没有刷新。
+
+`shouldComponentUpdate`: `在首次渲染期间或者调用了forceUpdate方法后，该方法不会被调用`
+
+解决办法:
+
+在需要更新视图的地方使用 `forceUpdate()` 方法, 强制更新ui视图即可。
+
+例如:
+
+container/product:
+
+```js
+  addItem() {
+    console.log('addItem...')
+    this.state.items.push(<div key={'item-' + count}>Item {count++}</div>);
+    this.setState({
+      items: this.state.items
+    })
+    console.log('new items: ', this.state.items)
+    this.forceUpdate()
+    return true
+  }
+```
+
+2.
 
 ### 2016/10/09
 
