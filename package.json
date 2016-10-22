@@ -27,6 +27,7 @@
     "react-addons-pure-render-mixin": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-immutable-render-mixin": "^0.9.7",
+    "react-pull-to-refresh": "^1.0.6",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
     "react-router-redux": "^4.0.6",

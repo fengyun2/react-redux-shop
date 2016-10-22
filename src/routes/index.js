@@ -2,7 +2,7 @@
  * @Author: fengyun2
  * @Date:   2016-10-22 14:39:34
  * @Last Modified by:   fengyun2
- * @Last Modified time: 2016-10-22 15:45:06
+ * @Last Modified time: 2016-10-22 16:56:01
  */
 
  export default {
@@ -37,6 +37,10 @@
       //   })
       // }
     },
+    {
+      path: 'product',
+      component: require('CONTAINERS/Product').default
+    }
     ]
   }
   ]

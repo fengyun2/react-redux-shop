@@ -52,6 +52,12 @@ npm run build
 
 ## Bug
 
+### 2016/10/22
+
+1. react 组件的 `state` 变化了，但是ui不更新
+
+造成这一bug的原因是: 引入`react-immutable-render-mixin`这个插件导致页面ui更新判断条件不成立, 以至于ui页面没有刷新。
+
 ### 2016/10/09
 
 1. `npm run dev` 和 `npm run build` 暂不能使用
