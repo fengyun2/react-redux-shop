@@ -12,11 +12,12 @@ class App extends Component {
 
     return (
       <div className="page page-current">
-        <BarNav />
-        <BarTab />
+        <BarNav {...this.props} />
+        <BarTab {...this.props} />
 
         <div className="content">
           这里是App内容区
+          {this.props.children}
         </div>
       </div>
     )

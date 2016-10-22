@@ -29,6 +29,15 @@ npm run build
 
 ## 升级日志
 
+### 2016/10/22
+
+1. 添加按需加载, 需要让路由动态加载组件, 需要将 `component` 换成 `getComponent`(未能成功)
+
+关键:
+- `require.ensure(dependencies, callback, chunkName)`
+这是 webpack 提供的方法, 这也是按需加载的核心方法。
+> 第一个参数是依赖, 第二个是回调函数,第三个就是上面提到过的 chunkName, 用来指定这个 chunk file 的 name。
+
 ### 2016/10/21
 
 1. 添加 `webpack.dll.config.js`, 即利用了 webpack 的 `DLLReferencePlugin`加快打包效率

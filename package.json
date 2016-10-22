@@ -5,7 +5,7 @@
   "author": "fengyun2 <2816708306@qq.com>",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --devtool eval --colors --inline --content-base dist",
+    "start": "webpack-dev-server --devtool eval --colors --inline --content-base src",
     "dll": "webpack --config webpack.dll.config.js",
     "dev": "npm run dll && npm start",
     "lint": "eslint --ext .js,.vue src"

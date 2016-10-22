@@ -2,7 +2,7 @@
 * @Author: fengyun2
 * @Date:   2016-10-22 00:50:38
 * @Last Modified by:   fengyun2
-* @Last Modified time: 2016-10-22 11:23:42
+* @Last Modified time: 2016-10-22 14:11:22
 */
 
 import React, {Component} from 'react'
@@ -22,7 +22,7 @@ class Brand extends Component {
   render() {
     const {items, filter, actions, children} = this.props
 
-    console.log(`this.props: `, this.props)
+    /* console.log(`this.props: `, this.props) */
 
     return (
       <div className="content-block">这里是内容区</div>

@@ -15,9 +15,8 @@ fs.readFile(index_file, 'utf-8', function (err, data) {
         console.log('error: ', err)
     } else {
         let devhtml = data
-        if (data.indexOf('vendor.dll.js') < 0) {
-            devhtml = devhtml.replace('<script></script>', '<script></script><script type="text/javascript" src="/dist/vendor.dll.js"></scri' +
-                    'pt><script type="text/javascript" src="/dist/index.bundle.js"></script>')
+        if (data.indexOf('index.bundle.js') < 0) {
+            devhtml = devhtml.replace('<script></script>', '<script></script><script type="text/javascript" src="/index.bundle.js"></script>')
         }
         fs.writeFileSync(index_file, devhtml)
     }
@@ -52,9 +51,12 @@ module.exports = {
         ]
     },
     output: {
+        // 这里的 [name] 就是 index
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
-        filename: './[name].bundle.js'
+        filename: './[name].bundle.js',
+        // 添加 chunkFilename
+        chunkFilename: './[name].[chunkhash:5].chunk.js',
     },
     module: {
 
@@ -122,9 +124,9 @@ module.exports = {
     externals: {},
     vue: {
         loaders: {
-            css: 'vue-style!css!sass!postcss?sourceMap',
-            sass: 'vue-style!css!sass!postcss?indentedSyntax?sourceMap',
-            scss: 'vue-style!css!sass!postcss?sourceMap',
+            css: 'vue-style!css!sass!postcss',
+            sass: 'vue-style!css!sass!postcss?indentedSyntax',
+            scss: 'vue-style!css!sass!postcss',
             js: 'babel',
             html: 'vue-html'
         }
@@ -162,7 +164,8 @@ module.exports = {
             'CONTAINERS': path.resolve(__dirname, './src/containers'),
             'MIDDLEWARE': path.resolve(__dirname, './src/middleware'),
             'REDUCERS': path.resolve(__dirname, './src/reducers'),
-            'STORE': path.resolve(__dirname, './src/store')
+            'STORE': path.resolve(__dirname, './src/store'),
+            'ROUTES': path.resolve(__dirname, './src/routes')
         }
     },
     plugins: [
@@ -172,6 +175,7 @@ module.exports = {
         new webpack
             .optimize
             .OccurenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin(),
         new webpack
             .optimize
             .UglifyJsPlugin({
@@ -186,12 +190,11 @@ module.exports = {
                 console.log('编译完成, 当前版本是：' + JSON.stringify(stats.toJson().hash))
             })
         },
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            /**
-             * 在这里引入 manifest 文件
-             */
-            manifest: require('./dist/vendor-manifest.json')
-        })
+        // new webpack.DllReferencePlugin({
+        //     context: __dirname,
+        //     // 在这里引入 manifest 文件
+
+        //     manifest: require('./dist/vendor-manifest.json')
+        // })
     ]
 }

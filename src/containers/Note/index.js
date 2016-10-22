@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-// import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {shouldComponentUpdate} from 'react-immutable-render-mixin'
 import * as ItemsActions from 'ACTIONS'
 import {bindActionCreators} from 'redux'
@@ -14,7 +13,6 @@ import styles from './style.css'
 class App extends Component {
   constructor(props) {
     super(props)
-    // this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
     this.shouldComponentUpdate = shouldComponentUpdate.bind(this)
   }
 
@@ -22,7 +20,7 @@ class App extends Component {
 
     const {items, filter, actions, children} = this.props
 
-    console.log(`this.props: `, this.props)
+    /* console.log(`this.props: `, this.props) */
 
     return (
       <div className={styles.normal}>
