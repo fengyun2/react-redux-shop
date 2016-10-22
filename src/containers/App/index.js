@@ -1,51 +1,26 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
-// import PureRenderMixin from 'react-addons-pure-render-mixin'
-import {shouldComponentUpdate} from 'react-immutable-render-mixin'
-import * as ItemsActions from 'ACTIONS'
-import {bindActionCreators} from 'redux'
-
-import SearchBar from 'COMPONENTS/Items/SearchBar'
-import Content from 'COMPONENTS/Items/Content'
-import Footer from 'COMPONENTS/Items/Footer'
-
-import AntdButton from 'COMPONENTS/antd/Button'
-
-import styles from './style.css'
+import BarNav from 'COMPONENTS/BarNav'
+import BarTab from 'COMPONENTS/BarTab'
+import NavLink from 'COMPONENTS/NavLink'
 
 class App extends Component {
   constructor(props) {
     super(props)
-    // this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-    this.shouldComponentUpdate = shouldComponentUpdate.bind(this)
   }
 
   render() {
 
-    const {items, filter, actions, children} = this.props
-
-    console.log(`this.props: `, this.props)
-
     return (
-      <div className={styles.normal}>
-        <h1>Manage Items</h1>
-        <SearchBar filterItem={actions.filterItem}/>
-        <Content items={items} filter={filter} deleteItem={actions.deleteItem}/>
-        <Footer addItem={actions.addItem} deleteAll={actions.deleteAll}/>
-        <AntdButton />
+      <div className="page page-current">
+        <BarNav />
+        <BarTab />
+
+        <div className="content">
+          这里是App内容区
+        </div>
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
-  return {items: state.items, filter: state.filter}
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ItemsActions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App

@@ -2,10 +2,9 @@
 * @Author: fengyun2
 * @Date:   2016-10-22 00:50:38
 * @Last Modified by:   fengyun2
-* @Last Modified time: 2016-10-22 01:17:30
+* @Last Modified time: 2016-10-22 11:23:42
 */
 
-'use strict';
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {shouldComponentUpdate} from 'react-immutable-render-mixin'
@@ -21,22 +20,12 @@ class Brand extends Component {
   }
 
   render() {
-
     const {items, filter, actions, children} = this.props
 
     console.log(`this.props: `, this.props)
 
     return (
-      <div>
-        <h1>Manage Brand</h1>
-        <div className="columns">
-          <div className="column">1</div>
-          <div className="column">2</div>
-          <div className="column">3</div>
-          <div className="column">4</div>
-          <div className="column">5</div>
-        </div>
-      </div>
+      <div className="content-block">这里是内容区</div>
     )
   }
 }

@@ -91,7 +91,7 @@ module.exports = {
                 exclude: path.join(__dirname, 'src'),
                 loader: 'style!css!sass?indentedSyntax!postcss'
             },
-                        {
+            {
                 test: /\.scss$/,
                 exclude: path.join(__dirname, 'src'),
                 loader: 'style!css!sass!postcss'
