@@ -10,8 +10,8 @@
     path: '/',
     component: require('CONTAINERS/App').default,
     indexRoute: {
-      path: 'brand',
-      component: require('CONTAINERS/App').default
+      // path: '/',
+      // component: require('CONTAINERS/App').default
       // getComponent(nextState, cb) {
       //   require.ensure([], (require) => {
       //     cb(null, require('CONTAINERS/Brand'), 'index')

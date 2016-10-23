@@ -4,11 +4,37 @@
   "description": "react-redux-shop",
   "author": "fengyun2 <2816708306@qq.com>",
   "private": true,
+  "engines": {
+    "node": ">=6.2.0",
+    "npm": "^3.0.0"
+  },
   "scripts": {
-    "start": "webpack-dev-server --devtool eval --colors --inline --content-base src",
-    "dll": "webpack --config webpack.dll.config.js",
+    "clean": "rimraf dist",
+    "start": "better-npm-run start",
+    "dll": "better-npm-run dll",
     "dev": "npm run dll && npm start",
+    "build": "better-npm-run build",
     "lint": "eslint --ext .js,.vue src"
+  },
+  "betterScripts": {
+    "start": {
+      "command": "webpack-dev-server --devtool eval --colors --inline --content-base src",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "dll": {
+      "command": "webpack --config webpack.dll.config.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "build": {
+      "command": "webpack-dev-server --config webpack.config.js --devtool eval --colors --inline --content-base src",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
   },
   "dependencies": {
     "antd": "^2.1.0",
@@ -50,9 +76,11 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-2": "^6.0.0",
     "babel-register": "^6.0.0",
+    "better-npm-run": "^0.0.11",
     "connect-history-api-fallback": "^1.1.0",
     "cross-env": "^3.1.1",
     "css-loader": "^0.25.0",
+    "cssnano": "^3.7.7",
     "eslint": "^3.7.1",
     "eslint-config-standard": "^6.2.0",
     "eslint-friendly-formatter": "^2.0.5",
@@ -69,6 +97,7 @@
     "http-proxy-middleware": "^0.17.2",
     "json-loader": "^0.5.4",
     "node-sass": "^3.10.0",
+    "nodemon": "^1.11.0",
     "ora": "^0.2.0",
     "postcss-flexboxfixer": "^0.0.5",
     "postcss-flexbugs-fixes": "^2.0.0",
@@ -79,6 +108,7 @@
     "precss": "^1.4.0",
     "progress-bar-webpack-plugin": "^1.9.0",
     "react-hot-loader": "^3.0.0-beta.5",
+    "rimraf": "^2.5.4",
     "rucksack-css": "^0.8.6",
     "sass-loader": "^4.0.2",
     "shelljs": "^0.6.0",

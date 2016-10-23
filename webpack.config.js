@@ -1,9 +1,10 @@
 /**
-* @Date:   2016-09-29T09:01:07+08:00
-* @Last modified time: 2016-09-29T10:25:04+08:00
-*/
+ * @Date:   2016-09-29T09:01:07+08:00
+ * @Last modified time: 2016-09-29T10:25:04+08:00
+ */
 
 let webpack = require('webpack')
+let cssnano = require('cssnano')
 let path = require('path')
 let fs = require('fs')
 let precss = require('precss')
@@ -60,20 +61,19 @@ module.exports = {
     },
     module: {
 
-        loaders: [
-            {
+        loaders: [{
                 test: /\.vue$/,
                 include: path.resolve(__dirname, 'src'),
                 loader: 'vue'
             }, {
                 test: /\.(css|sass|scss)$/,
                 include: path.resolve(__dirname, 'src'),
-/*                loaders: [
-                    'style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]___[local]-[hash:base64:' +
-                            '5]&sourceMap=true',
-                    'sass-loader',
-                    'postcss-loader'
-                ]*/
+                /*                loaders: [
+                                    'style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]___[local]-[hash:base64:' +
+                                            '5]&sourceMap=true',
+                                    'sass-loader',
+                                    'postcss-loader'
+                                ]*/
                 loaders: [
                     'style-loader',
                     'css-loader',
@@ -87,18 +87,15 @@ module.exports = {
                 test: /\.css$/,
                 exclude: path.join(__dirname, 'src'),
                 loader: 'style!css!postcss'
-            },
-            {
+            }, {
                 test: /\.sass$/,
                 exclude: path.join(__dirname, 'src'),
                 loader: 'style!css!sass?indentedSyntax!postcss'
-            },
-            {
+            }, {
                 test: /\.scss$/,
                 exclude: path.join(__dirname, 'src'),
                 loader: 'style!css!sass!postcss'
-            },
-            {
+            }, {
                 test: /\.(js|jsx)$/,
                 include: path.resolve(__dirname, 'src'),
                 exclude: /node_modules/,
@@ -135,6 +132,8 @@ module.exports = {
         precss,
         autoprefixer({
             flexbox: true,
+            add: true,
+            remove: true,
             browsers: [
                 '> 0.001%', 'iOS 7'
             ],
@@ -173,16 +172,18 @@ module.exports = {
         new webpack.optimize.DedupePlugin(),*/
 
         new webpack
-            .optimize
-            .OccurenceOrderPlugin(),
+        .optimize
+        .OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack
-            .optimize
-            .UglifyJsPlugin({
-                compress: {
-                    warnings: false
-                }
-            }),
+        .optimize
+        .UglifyJsPlugin({
+            compress: {
+                unused: true,
+                dead_code: true,
+                warnings: false
+            }
+        }),
         new webpack.HotModuleReplacementPlugin(),
         function () {
             return this.plugin('done', function (stats) {
