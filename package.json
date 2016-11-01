@@ -105,6 +105,7 @@
     "postcss-font-magician": "^1.4.0",
     "postcss-gradientfixer": "^0.0.6",
     "postcss-loader": "^0.13.0",
+    "postcss-modules-values": "^1.2.2",
     "postcss-unprefix": "^0.2.2",
     "precss": "^1.4.0",
     "progress-bar-webpack-plugin": "^1.9.0",

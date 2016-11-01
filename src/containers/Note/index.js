@@ -9,7 +9,7 @@ import SearchBar from 'COMPONENTS/Items/SearchBar'
 import Content from 'COMPONENTS/Items/Content'
 import Footer from 'COMPONENTS/Items/Footer'
 
-import styles from './style.css'
+import styles from './style.scss'
 
 @pureRender
 class App extends Component {
