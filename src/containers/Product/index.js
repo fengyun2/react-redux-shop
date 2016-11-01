@@ -7,16 +7,19 @@
 
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+// import PureRenderMixin from 'react-addons-pure-render-mixin'
+import pureRender from 'pure-render-decorator'
 import * as ItemsActions from 'ACTIONS'
 import {bindActionCreators} from 'redux'
 import ReactPullToRefresh from 'react-pull-to-refresh'
 
 let count = 1
+
+@pureRender
 class Product extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
+    // this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
 
     this.state = {
       items: [
@@ -29,14 +32,14 @@ class Product extends Component {
   componentWillMount () {
     // add event listeners (Flux Store, WebSocket, document, etc.)
   }
-  componentDidMount() {
+  componentDidMount () {
     // React.getDOMNode()
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     // remove event listeners (Flux Store, WebSocket, document, etc.)
   }
-  handleRefresh(resolve, reject) {
+  handleRefresh (resolve, reject) {
     let self = this
     console.log('handleRefresh...', this)
     setTimeout(function () {
@@ -44,11 +47,10 @@ class Product extends Component {
 
       console.log('is true: ', self.addItem())
     }, 500)
-
   }
-  addItem() {
+  addItem () {
     console.log('addItem...')
-    this.state.items.push(<div key={'item-' + count}>Item {count++}</div>);
+    this.state.items.push(<div key={'item-' + count}>Item {count++}</div>)
     this.setState({
       items: this.state.items
     })
@@ -57,12 +59,12 @@ class Product extends Component {
     return true
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('shouldComponentUpdate....')
-    return this.props != nextProps || this.state != nextState
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('shouldComponentUpdate....')
+  //   return this.props != nextProps || this.state != nextState
+  // }
 
-  render() {
+  render () {
     const {items, filter, actions, children} = this.props
 
     return (

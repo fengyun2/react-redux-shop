@@ -1,6 +1,6 @@
 {
     "presets": ["es2015", "stage-2", "react"],
-    "plugins": ["transform-runtime",
+    "plugins": ["transform-runtime", "transform-decorators-legacy",
     ["import",
     { "style": "css", "libraryName": "antd", "libraryDirectory": "lib" },
     { "style": "css", "libraryName": "antd-mobile", "libraryDirectory": "lib"}

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+// import PureRenderMixin from 'react-addons-pure-render-mixin'
+import pureRender from 'pure-render-decorator'
 import * as ItemsActions from 'ACTIONS'
 import {bindActionCreators} from 'redux'
 
@@ -10,18 +11,13 @@ import Footer from 'COMPONENTS/Items/Footer'
 
 import styles from './style.css'
 
+@pureRender
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('shouldComponentUpdate....')
-    return this.props != nextProps || this.state != nextState
-  }
-  render() {
-
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('shouldComponentUpdate....')
+  //   return this.props != nextProps || this.state != nextState
+  // }
+  render () {
     const {items, filter, actions, children} = this.props
 
     /* console.log(`this.props: `, this.props) */
@@ -37,11 +33,11 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {items: state.items, filter: state.filter}
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     actions: bindActionCreators(ItemsActions, dispatch)
   }

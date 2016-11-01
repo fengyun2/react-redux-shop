@@ -11,7 +11,7 @@
 import React, {Component} from 'react'
 
 class BarNav extends Component {
-  render() {
+  render () {
     return (
       <header className="bar bar-nav">
         <a className="icon icon-me pull-left open-panel"></a>

@@ -4,12 +4,7 @@ import BarTab from 'COMPONENTS/BarTab'
 import NavLink from 'COMPONENTS/NavLink'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-
+  render () {
     return (
       <div className="page page-current">
         <BarNav {...this.props} />

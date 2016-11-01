@@ -7,22 +7,20 @@
 
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+// import PureRenderMixin from 'react-addons-pure-render-mixin'
+import pureRender from 'pure-render-decorator'
 import * as ItemsActions from 'ACTIONS'
 import {bindActionCreators} from 'redux'
 
 import styles from './style.scss'
 
+@pureRender
 class Brand extends Component {
-  constructor(props) {
-    super(props)
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-  }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('shouldComponentUpdate....')
-    return this.props != nextProps || this.state != nextState
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('shouldComponentUpdate....')
+  //   return this.props != nextProps || this.state != nextState
+  // }
   render() {
     const {items, filter, actions, children} = this.props
 
@@ -48,7 +46,7 @@ class Brand extends Component {
         <div className="content-block-title">FaceBook卡片</div>
         <div className="card facebook-card">
           <div className="card-header no-border">
-            <div className="avatar"><img  src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34" /></div>
+            <div className="avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34" /></div>
             <div className="name">风云一出, 谁与争锋</div>
             <div className="date">星期六 16:20</div>
           </div>
@@ -66,11 +64,11 @@ class Brand extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {items: state.items, filter: state.filter}
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     actions: bindActionCreators(ItemsActions, dispatch)
   }

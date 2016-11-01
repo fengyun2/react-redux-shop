@@ -29,6 +29,10 @@ npm run build
 
 ## 升级日志
 
+### 2016/11/01
+
+1. 添加 `css-modules`, 解决 react 子组件样式冲突问题
+
 ### 2016/10/22
 
 1. 添加按需加载, 需要让路由动态加载组件, 需要将 `component` 换成 `getComponent`(未能成功)
