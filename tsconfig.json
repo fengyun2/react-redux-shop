@@ -1,0 +1,21 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "target": "es6",
+        "sourceMap": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "removeComments": true,
+        "allowJs": true,
+        "outDir": "backend"
+    },
+    "include": [
+        "backend/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "backend/**/*.js"
+    ]
+}

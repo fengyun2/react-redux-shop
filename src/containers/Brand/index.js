@@ -1,8 +1,8 @@
 /*
 * @Author: fengyun2
 * @Date:   2016-10-22 00:50:38
-* @Last Modified by:   fengyun2
-* @Last Modified time: 2016-10-22 17:58:57
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2016-11-04 20:03:55
 */
 
 import React, {Component} from 'react'
@@ -21,7 +21,7 @@ class Brand extends Component {
   //   console.log('shouldComponentUpdate....')
   //   return this.props != nextProps || this.state != nextState
   // }
-  render() {
+  render () {
     const {items, filter, actions, children} = this.props
 
     /* console.log(`this.props: `, this.props) */
