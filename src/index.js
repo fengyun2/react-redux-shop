@@ -1,3 +1,7 @@
+// 在应用中其它任何代码执行前调用一次
+import 'babel-polyfill'
+
+
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'

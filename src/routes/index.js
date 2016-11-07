@@ -37,6 +37,10 @@ export default {
     }, {
       path: 'product',
       component: require('CONTAINERS/Product').default
-    }]
+    }, {
+      path: 'add_cate',
+      component: require('CONTAINERS/Category/add').default
+    }
+  ]
   }]
 }

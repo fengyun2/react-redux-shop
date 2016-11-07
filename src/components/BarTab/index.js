@@ -1,26 +1,28 @@
 /*
 * @Author: fengyun2
 * @Date:   2016-10-22 10:45:56
-* @Last Modified by:   fengyun2
-* @Last Modified time: 2016-10-22 16:59:43
+ * @Last Modified by: fengyun2
+ * @Last Modified time: 2016-11-07 16:18:43
 */
 
 /**
  * 工具栏
  */
+
 import React, {Component} from 'react'
 import NavLink from 'COMPONENTS/NavLink'
 import classNames from 'classnames'
 
 class BarTab extends Component {
-  render() {
-    const {params} = this.props
+  render () {
+    const { params } = this.props
     const {pathname} = this.props.location
     const noteClass = classNames({
       'tab-item': true,
       'external': true,
-      'active': pathname == '/' || pathname =='/note' ? true: false
+      'active': pathname === '/' || pathname === '/note'
     })
+
     return (
       <nav className="bar bar-tab">
         <NavLink to="/note" className={noteClass}>

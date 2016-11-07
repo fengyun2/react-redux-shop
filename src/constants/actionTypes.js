@@ -1,9 +1,15 @@
 // import keyMirror from 'fbjs/lib/keyMirror'
 
-export const ADD_ITEM = "ADD_ITEM"
-export const DELETE_ALL = "DELETE_ALL"
-export const DELETE_ITEM = "DELETE_ITEM"
-export const FILTER_ITEM = "FILTER_ITEM"
+export const ADD_ITEM = 'DD_ITEM'
+export const DELETE_ALL = 'ELETE_ALL'
+export const DELETE_ITEM = 'ELETE_ITEM'
+export const FILTER_ITEM = 'ILTER_ITEM'
+
+// cate
+export const ADD_CATE = 'ADD_CATE'
+export const REQUEST_ADD_CATE = 'REQUEST_ADD_CATE'
+export const RECEIVE_ADD_CATE = 'RECEIVE_ADD_CATE'
+export const SHOW_CATE = 'SHOW_CATE'
 
 /**
  * 不明白这种写法为啥会读取不出来
