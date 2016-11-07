@@ -14,7 +14,7 @@ class AddCategory extends Component {
         email: '',
         sex: '',
         favoriteColor: '',
-        employed: '',
+        employed: [],
         notes: ''
       }
     }
@@ -31,26 +31,48 @@ class AddCategory extends Component {
   }
 
   handleChange (event) {
+    Array.prototype.remove = function(val) {
+      var index = this.indexOf(val)
+      if (index > -1) {
+        this.splice(index, 1)
+      }
+    }
+
     const inputType = event.target.type
     const inputName = event.target.name
     const inputValue = event.target.value
 
-    console.log('type: ', inputType)
-    console.log('checked: ', event.target)
-    console.log('checked: ', event.target.refs)
-
-    if (inputType !== 'select-multiple' || inputType !== 'checkbox') {
+    if (inputType !== 'select-multiple' && inputType !== 'checkbox') {
+      console.log('type: ', inputType)
       this.setState({user_info: Object.assign({}, this.state.user_info, {[inputName]: inputValue})})
     } else if (inputType === 'checkbox') {
-      // const _this = ReactDOM.findDOMNode(this.refs[''])
+      const {type} = event.target.dataset
+      // console.log(`event.target: `, event.target.dataset)
+      const _this = ReactDOM.findDOMNode(this.refs[type])
+      let {employed} = this.state.user_info
+      if (_this.checked) { // 选中
+        if (!employed.includes(type)) {
+          employed.push(type)
+          this.setState({user_info: Object.assign({}, this.state.user_info, {employed})})
+        }
+      } else {
+        if (employed.includes(type)) {
+          // employed.push(type)
+          employed.remove(type)
+          this.setState({user_info: Object.assign({}, this.state.user_info, {employed})})
+        }
+      }
+
+      console.log(`_this`, _this.checked)
+      console.log(this.state.user_info)
     }
     this.forceUpdate()
   }
 
   addCategory () {
     const {addCategory} = this.props.actions
-    const {userInfo} = this.state
-    addCategory(userInfo)
+    const {user_info} = this.state
+    addCategory(user_info)
     this.forceUpdate()
     return true
   }
@@ -61,7 +83,6 @@ class AddCategory extends Component {
 
   render () {
     const {user_info} = this.state
-    // console.log(user_info)
 
     return (
       <div className="content-block">
@@ -105,12 +126,12 @@ class AddCategory extends Component {
           <div>
             <label>Employed</label>
             <div>
-              <input name="employed" ref="employed" value={user_info.employed} onChange={this.handleChange.bind(this)} type="checkbox" data-id="11"/>
+              <input name="employed" ref="employed" value={user_info.employed} onChange={ this.handleChange.bind(this)} type="checkbox" data-type="employed"/>
             </div>
 
             <label>Employee</label>
             <div>
-              <input name="employed" ref="employee" value={user_info.employed} onChange={this.handleChange.bind(this)} type="checkbox" data-id="22"/>
+              <input name="employed" ref="employee" value={user_info.employed} onChange={ this.handleChange.bind(this)} type="checkbox" data-type="employee"/>
             </div>
           </div>
           <div>

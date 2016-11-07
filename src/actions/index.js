@@ -51,7 +51,8 @@ function requestAddCategory (data) {
 function receiveAddCategory (data, json) {
   return {
     type: RECEIVE_ADD_CATE,
-    data
+    data,
+    json
   }
 }
 
@@ -66,9 +67,6 @@ export const addCategory = data => {
       return dispatch(receiveAddCategory(data, json))
     }
     )
-    // return () => {
-    //   setTimeout(() => dispatch(receiveAddCategory(data)), 1000)
-    // }
   }
 
   // return new Promise((resolve, reject) => {
