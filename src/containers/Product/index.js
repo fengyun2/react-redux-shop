@@ -1,8 +1,8 @@
 /*
 * @Author: fengyun2
 * @Date:   2016-10-22 16:47:44
-* @Last Modified by:   fengyun2
-* @Last Modified time: 2016-10-22 17:56:32
+ * @Last Modified by: fengyun2
+ * @Last Modified time: 2016-11-07 21:22:23
 */
 
 import React, {Component} from 'react'
@@ -26,7 +26,6 @@ class Product extends Component {
         <div key={'item-' + count}>Item {count++}</div>
       ]
     }
-
   }
 
   componentWillMount () {

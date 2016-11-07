@@ -11,6 +11,7 @@ const initialItems = [{
 export default function filter (state = initialItems, action) {
   switch (action.type) {
     case ADD_CATE:
+      console.log(`action: `, action)
       return state
     case SHOW_CATE:
       return state
@@ -19,6 +20,7 @@ export default function filter (state = initialItems, action) {
       return state
     case RECEIVE_ADD_CATE:
       console.log('reducer-REC')
+      console.log(`action: `, action)
       return state
     default:
       return state

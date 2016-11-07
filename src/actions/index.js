@@ -57,6 +57,7 @@ function receiveAddCategory (data, json) {
 
 export const addCategory = data => {
   return (dispatch) => {
+    console.log(`actions: ${data}`)
     dispatch(requestAddCategory(data))
 
     return fetch(`https://api.github.com/repos/typecho-fans/plugins/contents/`).then(response => response.json())
