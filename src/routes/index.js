@@ -1,13 +1,13 @@
 /*
  * @Author: fengyun2
  * @Date:   2016-10-22 14:39:34
- * @Last Modified by:   fengyun2
- * @Last Modified time: 2016-11-09 11:27:01
+ * @Last Modified by: fengyun2
+ * @Last Modified time: 2016-11-09 11:34:21
  */
 
 /**
  * 绝对路径 or 相对路径
- * bug: 想不明白为啥 NotFound 懒加载就出错
+ * bug: 想不明白为啥 NotFound 懒加载就出错(解决了)
  */
 export default [{
   path: '/',
