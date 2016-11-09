@@ -55,9 +55,9 @@ module.exports = {
     // 这里的 [name] 就是 index
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: './[name].bundle.js',
+    filename: '[name].bundle.js',
     // 添加 chunkFilename
-    chunkFilename: './[name].[chunkhash:5].chunk.js',
+    chunkFilename: '[name].[chunkhash:5].chunk.js'
   },
   module: {
 
